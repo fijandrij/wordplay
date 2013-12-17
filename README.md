@@ -1,4 +1,4 @@
 wordplay
 ========
 
-My own implementation of wrdplay exemple from Meteor official website
+Implementation of wordplay game exemple from Meteor official website
