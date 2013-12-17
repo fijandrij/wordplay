@@ -1,0 +1,12 @@
+/* CSS declarations go here */
+
+html, body{
+	padding: 5px;
+}
+
+tr td{
+	font-family: Arial; font-size: 30pt; 
+	text-align:center;
+	height: 50px;
+	width: 50px;
+}

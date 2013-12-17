@@ -1,0 +1,113 @@
+<head>
+  <title>chat-aplikacija</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+    {{> main}}
+</body>
+
+<template name="main">
+  {{#if show_content}}
+    {{> hello}}
+    <br><br>
+    {{> players}}
+    <br><br>
+  {{else}}
+    {{> glavna}} 
+  {{/if}}
+</template>
+
+<template name="hello">
+  {{loginButtons}}
+
+  {{#if currentUser}}
+  	<h1>Pozdrav, {{user}}</h1> <br>
+  	<input type="button" value="Dodaj u red cekanja" id="dodaj_u_red_cekanja" onclick="this.disabled='disabled'"/>
+    {{> startgame}}
+  	{{loggedin}}	
+  {{/if}}  
+
+</template>
+
+<template name="players">
+	{{#each igraci}}
+    <strong>{{username}}</strong><!--ovaj username je key iz red_cekanja.insert-a -->
+  {{/each}}
+</template>
+
+<template name="startgame">
+  {{#if start}}
+    <input type="button" value="START GAME" id="zapocni_igru" />
+  {{/if}}
+</template>
+
+
+<!-- dodano by jengic ##################################################### -->
+
+<template name="glavna">
+
+ {{> tablica }} 
+ {{>form}}
+ {{>uprav}}
+
+</template>
+
+
+<template name="tablica">
+  <table border="1" id="table">
+    <tr>
+      <td >B</td>
+      <td >R</td>
+      <td >G</td>
+      <td >M</td>
+    </tr>
+    <tr>
+      <td >M</td>
+      <td >A</td>
+      <td >V</td>
+      <td >I</td>
+    </tr>
+    <tr>
+      <td >O</td>
+      <td >T</td>
+      <td >K</td>
+      <td >R</td>
+    </tr>
+    <tr>
+      <td >R</td>
+      <td >A</td>
+      <td >T</td>
+      <td >Ž</td>
+    </tr>
+  </table>
+  </div>
+</template>
+
+
+<template name="uprav">
+  <br />
+  <hr/>
+  <p id="rez"> </p>
+  <hr/>
+  <p id="nadene"> 
+    {{> nadene_rijeci}}
+  </p>
+</template>
+
+<template name="form">
+  <br/>
+    word: <input type="text" id="word" placeholder="Enter word" /> 
+  </br>
+  {{> words_to_find}}
+</template>
+
+<template name="nadene_rijeci">
+  {{#each words_array}}
+    {{points}} {{{words}}} <br>
+  {{/each}}
+</template>
+
+<template name="words_to_find">
+  Words left: <b>{{to_find}}</b>
+</template>
